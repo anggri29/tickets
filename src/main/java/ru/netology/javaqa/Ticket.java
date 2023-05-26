@@ -2,7 +2,7 @@ package ru.netology.javaqa;
 
 import java.util.Objects;
 
-public class Ticket {
+public class Ticket implements Comparable<Ticket> {
     private String from; // аэропорт откуда
     private String to; // аэропорт куда
     private int price; // цена
@@ -50,5 +50,16 @@ public class Ticket {
     @Override
     public int hashCode() {
         return Objects.hash(from, to, price, timeFrom, timeTo);
+    }
+
+    @Override
+    public int compareTo(Ticket o) {
+        if (this.price < o.price) {
+            return -1;
+        } else if (this.price > o.price) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 }
